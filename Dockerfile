@@ -8,3 +8,6 @@ php5-mysql \
 php5-sqlite \
 php5-gd \
 php5-curl \
+&& apt-get clean \
+&& apt-get autoclean \
+&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
