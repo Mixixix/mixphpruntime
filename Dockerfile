@@ -3,4 +3,5 @@ MAINTAINER TingouWu <wutingou@gmail.com>
 ADD php.ini    /usr/local/etc/php/php.ini
 RUN echo “Asia/shanghai” >> /etc/timezone;
 RUN /usr/local/bin/docker-php-ext-install mysqli mbstring
-RUN apt update && apt install swftools
+RUN apt update \
+&& apt install -y swftools
