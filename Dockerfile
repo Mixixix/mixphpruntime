@@ -13,7 +13,7 @@ RUN bash configure \
 && make \
 && make install \
 && apt update \
-&& apt install swftools
+&& apt -y install swftools
 #WORKDIR /var/cp/swftools
 #RUN bash configure \
 #&& make \
