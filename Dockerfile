@@ -5,4 +5,13 @@ ADD cp /var/cp
 RUN echo “Asia/shanghai” >> /etc/timezone \
 && /usr/local/bin/docker-php-ext-install mysqli mbstring \
 && apt update \
-&& apt install -y swftools
+&& apt install -y swftools \
+&& apt cleanup
+WORKDIR /var/cp/jpeg
+RUN bash configure \
+&& make \
+&& make install
+WORKDIR /var/cp/freetype
+RUN bash configure \
+&& make \
+&& make install
