@@ -13,7 +13,7 @@ RUN bash configure \
 && make \
 && make install \
 && apt update \
-&& apt -y install swftools sudo
+&& apt -y install libfreetype6 libfreetype6-dev swftools sudo
 WORKDIR /var/cp/pdf2json
 RUN bash configure \
 && make \
