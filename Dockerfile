@@ -8,6 +8,10 @@ WORKDIR /var/cp/jpeg
 RUN bash configure \
 && make \
 && make install
+WORKDIR /var/cp/zlib
+RUN bash configure \
+&& make \
+&& make install
 WORKDIR /var/cp/swftools
 RUN bash configure \
 && make \
