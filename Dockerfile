@@ -8,10 +8,6 @@ WORKDIR /var/cp/jpeg
 RUN bash configure \
 && make \
 && make install
-RUN apt update \
-&& apt install -y libjpgalleg4-dev libjpgalleg4.4 \
-&& apt-get clean \
-&& apt-get autoclean
 WORKDIR /var/cp/swftools
 RUN bash configure \
 && make \
