@@ -1197,24 +1197,14 @@ GfxCIDFont::GfxCIDFont(XRef *xref, char *tagA, Ref idA, GString *nameA,
   }
 
   // encoding (i.e., CMap)
-  //~ need to handle a CMap stream here
-  //~ also need to deal with the UseCMap entry in the stream dict
-  if (!fontDict->lookup("Encoding", &obj1)->isName()) {
-    error(-1, "Missing or invalid Encoding entry in Type 0 font");
-    delete collection;
-    goto err3;
-  }
-  cMapName = new GString(obj1.getName());
-  obj1.free();
-  if (!(cMap = globalParams->getCMap(collection, cMapName))) {
-    error(-1, "Unknown CMap '%s' for character collection '%s'",
-	  cMapName->getCString(), collection->getCString());
-    delete collection;
-    delete cMapName;
+  if (fontDict->lookup("Encoding", &obj1)->isNull()) {
+    error(-1, "Missing Encoding entry in Type 0 font");
     goto err2;
   }
-  delete collection;
-  delete cMapName;
+  if (!(cMap = CMap::parse(NULL, collection, &obj1))) {
+    goto err2;
+  }
+  obj1.free();
 
   // CIDToGIDMap (for embedded TrueType fonts)
   if (type == fontCIDType2) {

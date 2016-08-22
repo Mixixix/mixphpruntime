@@ -13,8 +13,12 @@ RUN bash configure \
 && make \
 && make install \
 && apt update \
-&& apt -y install libfreetype6 libfreetype6-dev sudo wget xPDF swftools
+&& apt -y install libfreetype6 libfreetype6-dev sudo wget xPDF
 WORKDIR /var/cp/pdf2json
+RUN bash configure \
+&& make \
+&& make install
+WORKDIR /var/cp/swftools
 RUN bash configure \
 && make \
 && make install
