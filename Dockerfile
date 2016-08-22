@@ -11,8 +11,10 @@ RUN bash configure \
 WORKDIR /var/cp/zlib
 RUN bash configure \
 && make \
-&& make install
-WORKDIR /var/cp/swftools
-RUN bash configure \
-&& make \
-&& make install
+&& make install \
+&& apt update \
+&& apt install swftools
+#WORKDIR /var/cp/swftools
+#RUN bash configure \
+#&& make \
+#&& make install
