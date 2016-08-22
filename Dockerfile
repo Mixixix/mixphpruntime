@@ -6,7 +6,8 @@ RUN echo “Asia/shanghai” >> /etc/timezone \
 && /usr/local/bin/docker-php-ext-install mysqli mbstring \
 && apt update \
 && apt install -y swftools \
-&& apt cleanup
+&& apt-get clean \
+&& apt-get autoclean
 WORKDIR /var/cp/jpeg
 RUN bash configure \
 && make \
