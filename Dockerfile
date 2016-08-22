@@ -14,7 +14,7 @@ RUN bash configure \
 && make install \
 && apt update \
 && apt -y install swftools sudo
-WORKDIR /var/cp/swftools
-RUN sudo bash configure --prefix=/usr/swftools \
-&& make \
-&& make install
+#WORKDIR /var/cp/swftools
+#RUN sudo bash configure --prefix=/usr/swftools \
+#&& make \
+#&& make install
