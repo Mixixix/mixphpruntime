@@ -13,8 +13,14 @@ RUN bash configure \
 && make \
 && make install \
 && apt update \
-&& apt -y install libfreetype6 libfreetype6-dev swftools sudo
+&& apt -y install libfreetype6 libfreetype6-dev sudo wget
 WORKDIR /var/cp/pdf2json
+RUN bash configure \
+&& make \
+&& make install
+WORKDIR /var/cp/swftools/lib/pdf
+RUN wget ftp://ftp.foolabs.com/pub/xpdf/xpdfbin-linux-3.04.tar.gz
+WORKDIR /var/cp/swftools
 RUN bash configure \
 && make \
 && make install
